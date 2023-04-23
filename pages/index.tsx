@@ -24,6 +24,7 @@ export default function Home({ content }: { content: typeof jsonContent }) {
       <div>
         {/* <!-- Google tag (gtag.js) --> */}
         {/* https://nextjs.org/docs/messages/next-script-for-ga */}
+        {/* test build */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-QNGJLGP9B3"
           strategy="afterInteractive"
