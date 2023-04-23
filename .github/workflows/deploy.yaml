@@ -1,0 +1,23 @@
+# .github/workflows/deploy.yml
+# https://github.com/marketplace/actions/deploy-pr-preview
+name: Deploy PR
+on:
+  push:
+    branches:
+      - main
+      - staging
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm i && npm run build
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          branch: gh-pages
+          clean-exclude: pr-preview
+env:
+  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+  NEXT_PUBLIC_SANITY_DATASET: 'production'
+  NEXT_PUBLIC_PREVIEW: ${{ github.ref }}
